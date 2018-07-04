@@ -1,0 +1,10 @@
+<div>
+  <form [formGroup]="form">
+      <div *ngFor="let search of searches" class="form-row">
+          <search-box [search]="search" [form]="form"
+          (terms)="searchFor($event)" (choice)="searchFor($event)"></search-box>
+      </div>
+  </form>
+</div>
+
+<search-results [listLoc]="listLoc" [inputTerms]="inputSearch"></search-results>

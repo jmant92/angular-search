@@ -1,0 +1,13 @@
+<div [formGroup]="form">
+  <div [ngSwitch]="search.controlType">
+      
+        <label [attr.for]="search.key">{{search.label}}: </label>
+        <input *ngSwitchCase="'textbox'" [formGroup]="form" 
+        [id]="search.key" [type]="search.type"
+        #searchBox (keyup)="sendTerms(search.key + ':' + searchBox.value)">
+
+      <select *ngSwitchCase="'dropdown'" [id]="search.key" (change)="sendChoice(search.key, $event)">
+          <option *ngFor="let opt of search.options" [value]="opt.key">{{opt.value}}</option>
+      </select>
+  </div>
+</div>
